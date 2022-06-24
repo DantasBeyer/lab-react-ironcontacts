@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Contacts from "./components/Contacts";
+import contactsJson from "./contacts.json"
+ 
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const [contacts, setContacts] = useState(contactsJson); 
 
+  return <div className="App">
+            <Contacts name= {contacts[2].name}
+                      image= {contacts[2].pictureUrl}
+                      popularity={contacts[2].popularity}
+                      id={contacts[2].id}
+                      wonOscar={contacts[2].wonOscar}
+                      wonEmmy={contacts[2].wonEmmy}
+                      />
+                      
+         </div>;
+  
+}
 export default App;
