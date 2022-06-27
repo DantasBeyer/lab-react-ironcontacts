@@ -2,7 +2,7 @@ function Contacts ({pictureUrl, name, popularity, wonOscar, wonEmmy}){
  return (
 
   <div  className="Contacts">   
-        <img src={pictureUrl} className="contactPic" alt="no-img"/>
+        <img src={pictureUrl} className="Picture" alt="no-img"/>
         <p>{name}</p>
         <p>{popularity.toFixed(2)}</p>
         {wonOscar && <p>🏆</p>}
