@@ -13,19 +13,23 @@ function App() {
     const newContact = contactsJson [Math.floor(Math.random()* contactsJson.length)];
     if(contacts.indexOf(newContact) === -1){
       getContact.push(newContact);
-    }
+  }
     setContacts(getContact)
-    }
+  }
 
   const btnSortBypopularity =()=>{
     const getContact = [...contacts];
     setContacts(getContact.sort((contact1, contact2) => contact1.popularity - contact2.popularity));
-   }
+  }
    
-   const btnSortByname =()=> {
-     const getContact = [...contacts];
-     setContacts(getContact.sort ((contact1,contact2) => contact1.name.localeCompare(contact2.name)));
-   }
+  const btnSortByname =()=> {
+    const getContact = [...contacts];
+    setContacts(getContact.sort ((contact1,contact2) => contact1.name.localeCompare(contact2.name)));
+  }
+
+  const btnDelete =(id)=> {
+    setContacts(contacts.filter(contact => contact.id !== id));
+  }
 
 
 // display function
@@ -36,6 +40,7 @@ function App() {
           
             <Contacts key={contact.id}
               {...contact}
+              btnDelete={btnDelete}
             />
          
         )
@@ -55,6 +60,7 @@ function App() {
       <h2>Popularity</h2>
       <h2>Won Oscar</h2>
       <h2>Won Emmy</h2>
+      <h2>Actions</h2>
     </div>
     {
       displayContacts()

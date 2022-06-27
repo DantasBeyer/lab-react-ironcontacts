@@ -1,4 +1,4 @@
-function Contacts ({pictureUrl, name, popularity, wonOscar, wonEmmy}){    
+function Contacts ({pictureUrl, name, popularity, wonOscar, wonEmmy, id, btnDelete}){    
  return (
 
   <div  className="Contacts">   
@@ -7,6 +7,7 @@ function Contacts ({pictureUrl, name, popularity, wonOscar, wonEmmy}){
         <p>{popularity.toFixed(2)}</p>
         {wonOscar && <p>🏆</p>}
         {wonEmmy && <p>🏆</p>}
+        <button className="btnDell" onClick={()=> btnDelete(id)}>Delete Contact </button>
   </div>
 
   )
