@@ -1,24 +1,15 @@
-import React from "react"; 
+function Contacts ({pictureUrl, name, popularity, wonOscar, wonEmmy}){    
+ return (
 
+  <div  className="Contacts">   
+        <img src={pictureUrl} className="contactPic" alt="no-img"/>
+        <p>{name}</p>
+        <p>{popularity.toFixed(2)}</p>
+        {wonOscar && <p>🏆</p>}
+        {wonEmmy && <p>🏆</p>}
+  </div>
 
-
-
-function Contacts (props){
-
-    
-/*      
-    return (
-        <div  className="Contacts">
-            
-
-            <img className="Picture" src={props.image} alt="" />
-            <p>Name: {props.name}</p>         
-            <p>Popularity: {props.popularity}</p>  
-            
-        
-        </div>
-
-    )*/
+  )
 } 
 
-export default Contacts;
+export default Contacts; 
