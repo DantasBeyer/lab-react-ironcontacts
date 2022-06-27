@@ -1,23 +1,34 @@
 import { useState } from "react";
 import './App.css';
 import Contacts from "./components/Contacts";
-import contactsData from "./contacts.json"
+import contactsJson from "./contacts.json"
  
 
 function App() {
-  const [contacts, setContacts] = useState(contactsData.slice(0,5));
+  const [contacts, setContacts] = useState(contactsJson.slice(0,5));
  
-// add contact button
-  const addContact =()=> {
+// btn functions
+  const btnAddContact =()=> {
     const getContact = [...contacts];
-    const newContact = contactsData [Math.floor(Math.random()* contactsData.length)];
+    const newContact = contactsJson [Math.floor(Math.random()* contactsJson.length)];
     if(contacts.indexOf(newContact) === -1){
       getContact.push(newContact);
     }
-setContacts(getContact)
-  }
-  
+    setContacts(getContact)
+    }
 
+  const btnSortBypopularity =()=>{
+    const getContact = [...contacts];
+    setContacts(getContact.sort((contact1, contact2) => contact1.popularity - contact2.popularity));
+   }
+   
+   const btnSortByname =()=> {
+     const getContact = [...contacts];
+     setContacts(getContact.sort ((contact1,contact2) => contact1.name.localeCompare(contact2.name)));
+   }
+
+
+// display function
   const displayContacts = () => {
     return (
       contacts.map((contact) => {
@@ -34,7 +45,9 @@ setContacts(getContact)
   return <div className="App">
       <h1>Iron Contacts</h1>
     <div>
-      <button onClick={()=> addContact ()}>Add Random Contact</button>
+      <button onClick={()=> btnAddContact ()}>Add Random Contact</button>
+      <button onClick={()=> btnSortBypopularity ()}>Sort Contacts by Popularity</button>
+      <button onClick={()=> btnSortByname ()}>Sort Contacts by Name</button>
     </div>
     <div className="bar">    
       <h2>Picture</h2>
